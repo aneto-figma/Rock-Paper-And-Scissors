@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Verify the dev server has started and is serving the app.
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+# shellcheck disable=SC1091
+source "$(dirname "$0")/env"
+PORT="${PORT:-19006}"
+URL="http://localhost:$PORT"
+
+echo "Waiting for dev server at $URL ..."
+
+# The first webpack build can take a couple of minutes, so retry generously.
+ATTEMPTS=120
+for i in $(seq 1 "$ATTEMPTS"); do
+  CODE="$(curl -s -o /dev/null -w '%{http_code}' "$URL" || echo 000)"
+  if [ "$CODE" = "200" ]; then
+    echo "Dev server is up ($URL returned HTTP 200)."
+    exit 0
+  fi
+  sleep 2
+done
+
+echo "ERROR: dev server did not become reachable at $URL after $((ATTEMPTS * 2))s." >&2
+exit 1
