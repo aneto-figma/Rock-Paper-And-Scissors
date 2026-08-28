@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# First-open setup. System-level prerequisites (cached after the first run).
+# This is an Expo (react-native-web) app served through webpack; everything it
+# needs comes from npm, so there is nothing OS-level to install here. We just
+# sanity-check that Node and npm are available.
+set -euo pipefail
+
+echo "Checking system prerequisites..."
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "ERROR: node is not installed or not on PATH." >&2
+  exit 1
+fi
+
+if ! command -v npm >/dev/null 2>&1; then
+  echo "ERROR: npm is not installed or not on PATH." >&2
+  exit 1
+fi
+
+echo "node $(node --version) / npm $(npm --version) detected."
+echo "Setup complete."

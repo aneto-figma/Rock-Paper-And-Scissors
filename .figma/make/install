@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Install project dependencies. Runs on every project open.
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+echo "Installing dependencies (npm install)..."
+npm install
+
+echo "Dependencies installed."

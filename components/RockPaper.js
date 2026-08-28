@@ -25,17 +25,17 @@ export default function RockPaper(){
         let resultString = "";
 
         if (choice === 1) {
-            resultString = randomComputerChoice === 3 ? "WIN" : "LOSE";
+            resultString = randomComputerChoice === 3 ? "GANHOU" : "PERDEU";
         }
         else if (choice === 2) {
-            resultString = randomComputerChoice === 1 ? "WIN" : "LOSE";
+            resultString = randomComputerChoice === 1 ? "GANHOU" : "PERDEU";
         }
         else {
-            resultString = randomComputerChoice === 2 ? "WIN" : "LOSE";
+            resultString = randomComputerChoice === 2 ? "GANHOU" : "PERDEU";
         }
 
         if (choice === randomComputerChoice){
-            resultString = "DRAW";
+            resultString = "EMPATE";
         }
 
         setUserChoice(choice);

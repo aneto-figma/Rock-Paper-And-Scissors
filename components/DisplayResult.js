@@ -18,7 +18,7 @@ export default function DisplayResult({ userChoice, computerChoice }) {
         <Text style={styles.playerName}>You</Text>
       </View>
 
-      <View style={styles.column}>
+      <View style={[styles.column, styles.computerColumn]}>
         <FontAwesome5
           name={ICONS[computerChoice - 1]}
           size={64}
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  computerColumn: {
+    backgroundColor: "#ffffff",
   },
   playerName: {
     color: "#373737",
