@@ -7,29 +7,32 @@ const Actions = ({play, canPlay}) => {
     <View style={styles.actions}>
       <TouchableOpacity     // Rock
         disabled={!canPlay}
-        style={styles.actionButton}
+        activeOpacity={0.8}
+        style={[styles.actionButton, styles.rock]}
         onPress={() => play(1)}
       >
-          <FontAwesome5 name={'hand-rock'} size={32} color='#6a5300' />
+          <FontAwesome5 name={'hand-rock'} size={34} color='#FFFFFF' />
       </TouchableOpacity>
 
       <TouchableOpacity         // paper
         disabled={!canPlay}
-        style={styles.actionButton}
+        activeOpacity={0.8}
+        style={[styles.actionButton, styles.paper]}
         onPress={() => play(2)}
-      > 
-        <FontAwesome5 name='hand-paper' size={32} color='#6a5300' />
+      >
+        <FontAwesome5 name='hand-paper' size={34} color='#FFFFFF' />
       </TouchableOpacity>
 
       <TouchableOpacity         // scissors
         disabled={!canPlay}
-        style={styles.actionButton}
+        activeOpacity={0.8}
+        style={[styles.actionButton, styles.scissors]}
         onPress={() => play(3)}
       >
-        <FontAwesome5 
+        <FontAwesome5
             name='hand-scissors'
-            size={32}
-            color='#6a5300'
+            size={34}
+            color='#FFFFFF'
             style={{ transform: [{rotate: '67deg'}]}}
         />
       </TouchableOpacity>
@@ -40,18 +43,34 @@ const Actions = ({play, canPlay}) => {
 
 const styles = StyleSheet.create({
     actions: {
-        height:100,
+        height:120,
         flexDirection:'row',
         justifyContent:'space-around',
         alignItems:'center',
+        backgroundColor:'#0E0B1E',
     },
     actionButton: {
-        width:64,
-        height: 64,
+        width:76,
+        height: 76,
         justifyContent: 'center',
         alignItems:'center',
-        backgroundColor:'#f9d835',
-        borderRadius:32
+        borderRadius:38,
+        shadowOpacity: 0.55,
+        shadowRadius: 14,
+        shadowOffset: { width: 0, height: 6 },
+        elevation: 8,
+    },
+    rock: {
+        backgroundColor:'#FF6B6B',
+        shadowColor:'#FF6B6B',
+    },
+    paper: {
+        backgroundColor:'#4ECDC4',
+        shadowColor:'#4ECDC4',
+    },
+    scissors: {
+        backgroundColor:'#A78BFA',
+        shadowColor:'#A78BFA',
     }
 });
 

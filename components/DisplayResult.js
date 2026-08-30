@@ -7,7 +7,7 @@ const ICONS = ["hand-rock", "hand-paper", "hand-scissors"];
 export default function DisplayResult({ userChoice, computerChoice }) {
   return (
     <>
-      <View style={styles.column}>
+      <View style={[styles.column, styles.youColumn]}>
         <FontAwesome5
           name={ICONS[userChoice - 1]}
           size={64}
@@ -15,7 +15,7 @@ export default function DisplayResult({ userChoice, computerChoice }) {
           solid
           style={userChoice === 3 ? styles.scissorsLeftIcon : styles.leftIcon}
         />
-        <Text style={styles.playerName}>You</Text>
+        <Text style={[styles.playerName, styles.youName]}>You</Text>
       </View>
 
       <View style={[styles.column, styles.computerColumn]}>
@@ -28,7 +28,7 @@ export default function DisplayResult({ userChoice, computerChoice }) {
             computerChoice === 3 ? styles.scissorsRightIcon : styles.rightIcon
           }
         />
-        <Text style={styles.playerName}>Computer</Text>
+        <Text style={[styles.playerName, styles.computerName]}>Computer</Text>
       </View>
     </>
   );
@@ -39,14 +39,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginHorizontal: 12,
+    paddingVertical: 28,
+    borderRadius: 24,
+  },
+  youColumn: {
+    backgroundColor: "rgba(124, 58, 237, 0.20)",
+    borderWidth: 1,
+    borderColor: "#7C3AED",
   },
   computerColumn: {
     backgroundColor: "#ffffff",
   },
   playerName: {
-    color: "#373737",
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: "700",
+    letterSpacing: 1,
     marginTop: 16,
+  },
+  youName: {
+    color: "#FFFFFF",
+  },
+  computerName: {
+    color: "#373737",
   },
   leftIcon: {
     transform: [{ rotateZ: "80deg" }],

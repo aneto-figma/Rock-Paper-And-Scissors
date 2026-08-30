@@ -67,6 +67,12 @@ export default function RockPaper(){
         },600);
     }
 
+    // Neon color that matches the outcome
+    const resultColor =
+        result === "GANHOU" ? "#00E5A0" :
+        result === "PERDEU" ? "#FF4D6D" :
+        "#FFD166";
+
     // return the view
     return(
         <SafeAreaView style={styles.container}>
@@ -74,16 +80,19 @@ export default function RockPaper(){
             <View style={styles.content}>
                 <View style={styles.result}>
                     <Animated.Text
-                        style={[styles.resultText, {opacity: fadeAnimation}]}
+                        style={[styles.resultText, {opacity: fadeAnimation, color: resultColor}]}
                     >
                         {result}
                     </Animated.Text>
                 </View>
                 <View style={styles.screen}>
                     {!result ? (
-                        <Text style={styles.readyText}>Let's Play</Text>
+                        <View style={styles.ready}>
+                            <Text style={styles.readyEmoji}>✊ ✋ ✌️</Text>
+                            <Text style={styles.readyText}>Let's Play</Text>
+                        </View>
                     ) : (
-                        <DisplayResult 
+                        <DisplayResult
                             userChoice={userChoice}
                             computerChoice={computerChoice}
                         />
@@ -102,8 +111,8 @@ const styles = StyleSheet.create({
     },
     content: {
         flex:1,
-        marginBottom:5,   
-        backgroundColor:'#e8eaed'
+        marginBottom:5,
+        backgroundColor:'#0E0B1E'
     },
     result : {
         height:100,
@@ -111,19 +120,31 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     resultText:{
-        fontSize: 48,
-        fontWeight:"bold",
+        fontSize: 56,
+        fontWeight:"800",
+        letterSpacing: 3,
+        textShadowColor: 'rgba(0,0,0,0.35)',
+        textShadowOffset: { width: 0, height: 4 },
+        textShadowRadius: 12,
     },
     screen: {
         flex:1,
         flexDirection:'row',
     },
+    ready: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    readyEmoji: {
+        fontSize: 56,
+        marginBottom: 16,
+    },
     readyText: {
-        marginTop:-48,
-        alignSelf:'center',
         textAlign:'center',
-        width:'100%',
         fontSize:48,
-        fontWeight:'bold',
+        fontWeight:'800',
+        letterSpacing: 2,
+        color: '#FFFFFF',
     }
 });

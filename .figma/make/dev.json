@@ -1,0 +1,57 @@
+{
+  "pointAndEdit": {
+    "paths": {
+      "prefer": [
+        "App.js",
+        "components/RockPaper.js",
+        "components/Actions.js",
+        "components/DisplayResult.js",
+        "components/Header.js"
+      ],
+      "deprioritize": [],
+      "local-library": [],
+      "external-library": [],
+      "exclude": [
+        "assets/**",
+        "node_modules/**",
+        "babel.config.js",
+        ".expo-shared/**",
+        ".github/**"
+      ]
+    },
+    "pathClassification": {
+      "classifier": "sonnet"
+    },
+    "exclusions": [
+      {
+        "glob": "assets/**",
+        "reason": "Static image assets (icons, splash screens) are not UI source anchors and cannot be edited as component code."
+      },
+      {
+        "glob": "node_modules/**",
+        "reason": "External dependency implementations owned by published packages; not editable in this project and not UI source anchors."
+      },
+      {
+        "glob": "babel.config.js",
+        "reason": "Build tooling configuration; does not participate in rendering UI."
+      },
+      {
+        "glob": ".expo-shared/**",
+        "reason": "Expo internal shared state files; not UI source anchors."
+      },
+      {
+        "glob": ".github/**",
+        "reason": "GitHub workflow and funding configuration; not UI source anchors."
+      }
+    ],
+    "generated": {
+      "schemaVersion": 1,
+      "source": "setup-agent.point-and-edit-path-classifier",
+      "prompt": "same-turn-setup-subagent-v3",
+      "model": "claude-sonnet-4-6",
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "confidence": 0.98,
+      "explanation": "The repository is a minimal Expo React Native app with exactly five user-authored source files, all of which directly render UI, making classification unambiguous with near-maximum confidence."
+    }
+  }
+}
